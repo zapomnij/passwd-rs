@@ -1,0 +1,15 @@
+[package]
+# Package details
+name = "passwd-rs"
+description = "Crate/Library providing a functions to get information about groups, users and shadow passwords."
+version = "0.1.0"
+license = "MIT"
+homepage = "https://github.com/zapomnij/passwd-rs"
+repository = "https://github.com/zapomnij/passwd-rs.git"
+readme = "README.md"
+
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
