@@ -2,7 +2,7 @@
 # Package details
 name = "passwd-rs"
 description = "Crate/Library providing a functions to get information about groups, users and shadow passwords."
-version = "0.1.0"
+version = "0.2.0"
 license = "MIT"
 homepage = "https://github.com/zapomnij/passwd-rs"
 repository = "https://github.com/zapomnij/passwd-rs.git"

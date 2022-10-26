@@ -90,4 +90,13 @@ impl User {
 			Self::convert(getpwnam(cstr.as_ptr()))
 		}
 	}
+
+	/// Fetch information about current user
+	pub fn current_user() -> io::Result<Self> {
+		unsafe {
+			let uid = crate::getuid();
+
+			Self::convert(getpwuid(uid))
+		}
+	}
 }

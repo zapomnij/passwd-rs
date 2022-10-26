@@ -6,7 +6,7 @@
 //! use passwd_rs::{Group, User, Shadow, AccountStatus};
 //!
 //! fn main() -> std::io::Result<()> {
-//! 	let user = User::new_from_uid(0)?;
+//! 	let user = User::current_user()?;
 //! 	let password;
 //! 	if user.passwd.as_ref().unwrap().eq("x") {
 //! 		// WARN! This works only if program is executed as root
@@ -50,6 +50,7 @@ pub mod group;
 pub mod shadow;
 pub mod user;
 
+use std::os::raw::*;
 pub use group::Group;
 pub use shadow::AccountStatus;
 pub use shadow::Shadow;
@@ -115,4 +116,19 @@ mod tests {
 
 		Ok(())
 	}
+}
+
+extern "C" {
+	fn getuid() -> c_uint;
+}
+
+/// Get current user's ID
+pub fn whoami_uid() -> c_uint {
+	unsafe { getuid() }
+}
+
+/// Get current user's username
+pub fn whoami() -> std::io::Result<String> {
+	let user = User::current_user()?;
+	Ok(user.name)
 }
